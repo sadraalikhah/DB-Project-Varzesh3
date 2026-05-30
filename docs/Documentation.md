@@ -1,12 +1,6 @@
-![[Pasted image 20260529161137.png|479]]![[Pasted image 20260529161224.png|481]]
-![[Pasted image 20260529161303.png|481]]![[Pasted image 20260529161451.png|476]]
-
-
-
----
 # Executive Summary  
 
-This revision restructures the data model documentation into five logical subsystems (Sports Structure, People Management, Content Management, User Interaction, Prediction System) for clarity.  We normalize problematic attributes (e.g. multivalued “candidates” or “groups”) into separate entities to enforce first normal form【39†L30-L33】.  Specializations are explicitly labeled **disjoint** or **overlapping** with justifications: for example, a **Person** can be both a Player and a Coach (overlapping)【40†L248-L252】, whereas a **Content** item is exactly one of (News, Story, Video, PictureGallery) (disjoint)【40†L238-L242】.  Each entity section below lists its purpose, key attributes (PK/FKs noted), relationships (with cardinalities) and business rules.  A comprehensive relationship summary table follows.  We also highlight inconsistencies between the original ER diagram and the documentation (e.g. missing attributes like prediction timestamps, improper multi-valued fields) and recommend fixes.  Finally, we include a sample **Player–Team history** table (with start/end dates) and a short Mermaid ER diagram snippet.  The goal is a concise, academic-style design ready for grading or defense.
+This revision restructures the data model documentation into five logical subsystems (Sports Structure, People Management, Content Management, User Interaction, Prediction System) for clarity.  We normalize problematic attributes (e.g. multivalued “candidates” or “groups”) into separate entities to enforce first normal form. Specializations are explicitly labeled **disjoint** or **overlapping** with justifications: for example, a **Person** can be both a Player and a Coach (overlapping), whereas a **Content** item is exactly one of (News, Story, Video, PictureGallery) (disjoint).  Each entity section below lists its purpose, key attributes (PK/FKs noted), relationships (with cardinalities) and business rules.  A comprehensive relationship summary table follows.  We also highlight inconsistencies between the original ER diagram and the documentation (e.g. missing attributes like prediction timestamps, improper multi-valued fields) and recommend fixes.  Finally, we include a sample **Player–Team history** table (with start/end dates) and a short Mermaid ER diagram snippet.  The goal is a concise, academic-style design ready for grading or defense.
 
   
 
