@@ -180,6 +180,7 @@
 | PlayerID | INT | PK/FK → Player | NOT NULL |
 | MatchID | INT | PK/FK → Match | NOT NULL |
 | PerformanceScore | DECIMAL(5,2) | | |
+| MatchLocation | VARCHAR(255) | | |
 
 ---
 
@@ -268,7 +269,7 @@
 | ContentID | INT | PK/FK → Content | NOT NULL |
 | ArticleText | LONGTEXT | | NOT NULL |
 | SecondaryTitle | VARCHAR(255) | | |
-
+| Pictures | VARCHAR(255) | | |
 ---
 
 ### Story *(Subclass of Content — Disjoint)*
@@ -293,18 +294,14 @@
 ---
 
 ### PictureGallery *(Subclass of Content — Disjoint)*
-
+ 
 | Column | Type | Key | Constraint |
 |--------|------|-----|------------|
-| PictureID | INT | PK | NOT NULL |
-| GalleryID | INT | FK → PictureGallery | |
-| NewsID | INT | FK → News | |
+| ContentID | INT | PK/FK → Content | NOT NULL |
+| Caption | TEXT | | |
+| Pictures | VARCHAR(255) | | |
 
 ---
-
-### Picture *(normalizes multivalued attribute Pictures)*
-
-
 
 ### Tag
 
@@ -417,11 +414,11 @@
 |--------|------|-----|------------|
 | PollID | INT | PK | NOT NULL |
 | Status | ENUM('Active','Closed') | | NOT NULL |
-
+| Candidates | VARCHAR(255) | | |
 
 ---
 
-### PollOption *(normalizes multivalued attribute 'Candidates' from Poll)*
+### PollOption
 
 | Column | Type | Key | Constraint |
 |--------|------|-----|------------|
