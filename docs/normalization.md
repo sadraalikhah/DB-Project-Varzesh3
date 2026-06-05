@@ -171,7 +171,7 @@ Person:
 | PhotoURL | VARCHAR(255) | | |
 | IsRetired | BOOLEAN | | DEFAULT FALSE |
 
-> `SportID` removed. A person's sport is derivable via `Player → PlayerTeam → Team → Sport`.
+> `SportID` removed. A person's sport is derivable via `Player → PlayerTeam → Team → Competition → Sport`.
 
 **Reason:** `SportID` in `Person` created a transitive dependency `PersonID → SportID → SportName`. Since `SportID` is not a candidate key, this violates 3NF and causes update anomalies (if a sport's data changes, every Person row referencing it must be updated). Removing it and relying on the existing Team–Sport relationship eliminates this redundancy.
 
