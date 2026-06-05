@@ -1,6 +1,6 @@
 # DB-Project-Varzesh3
 
-An Entity-Relationship data model for the multi-sport news and community platform, [Varzesh3](https://www.varzesh3.com/) website. The design covers the full domain — from competitions and match data to user-generated content, predictions, and community interaction — structured into five logical subsystems.
+An Entity-Relationship data model for the multi-sport news and community platform, [Varzesh3](https://www.varzesh3.com/) website. The design covers the full domain — from competitions and match data to user interactions, content publishing, polls, and prediction systems.
 
 ---
 
@@ -72,7 +72,7 @@ Allows users to forecast match outcomes.
 
 ## Key Design Decisions
 
-- **Disjoint vs. Overlapping specializations:** `Competition` and `Content` use *disjoint* specialization (each instance is exactly one subtype). `Person → Player/Coach` is *overlapping* (a person can hold both roles simultaneously).
+- **Disjoint vs. Overlapping specializations:** `Competition` and `Content` use *disjoint* specialization (each instance is exactly one subtype). `Person → Player/Coach` is *overlapping* (a person can be both a player and a coach).
 - **1NF normalization:** Multivalued attributes from the original model (poll candidates, gallery pictures, competition groups) have been extracted into dedicated entities (`PollOption`, `Picture`).
 - **Player–Team history:** The Player–Team relationship is modeled as a many-to-many with a `PlayerTeamHistory` join table, supporting start/end dates for tracking transfers.
 - **Match–Team constraint:** Each `Match` involves exactly two `Team` records — enforced via two FKs (`TeamID1`, `TeamID2`) or a `MatchTeam` associative table.
@@ -106,10 +106,12 @@ Allows users to forecast match outcomes.
 ## Repository Structure
 
 ```
-sports-db-phase1/
+DB-Project-Varzesh3/
 ├── README.md
 ├── docs/
-│   └── Documentation.md      # Full entity-by-entity design documentation
+│   ├── Documentation.md      # Full entity-by-entity design documentation
+│   ├── Normalization.md      # Normalization forms and decomposition
+│   └── Mapping.md            # EER to relational schema mapping
 └── diagrams/
     ├── DB-Phase1.drawio       # Editable ER diagram (draw.io)
     └── DB-Phase1.png          # Exported diagram image
@@ -119,8 +121,22 @@ sports-db-phase1/
 
 ## Full Documentation
 
-See [`docs/Documentation.md`](docs/Documentation.md) for the complete specification, including:
-- Detailed attribute lists (PKs, FKs, types) for every entity
-- Business rules per entity
-- Inconsistencies found in the original diagram and recommended fixes
-- Mermaid ER diagram snippet
+The project includes comprehensive documentation across multiple files:
+
+- **[`docs/Documentation.md`](docs/Documentation.md)** — Complete entity-by-entity design specification
+  - Detailed attribute lists (PKs, FKs, types) for every entity
+  - Business rules per entity
+  - Inconsistencies found in the original diagram and recommended fixes
+  - Mermaid ER diagram snippet
+
+- **[`docs/Normalization.md`](docs/Normalization.md)** — Normalization analysis and forms
+  - First Normal Form (1NF) decomposition
+  - Boyce-Codd Normal Form (BCNF) discussion
+  - Multivalued and functional dependency analysis
+  - Key preservation and losslessness proof
+
+- **[`docs/Mapping.md`](docs/Mapping.md)** — EER to relational schema mapping
+  - Step-by-step transformation from EER to relational model
+  - Handling of specialization/generalization hierarchies
+  - Mapping strategies for inheritance types
+  - Complete relational schema with SQL-ready definitions
