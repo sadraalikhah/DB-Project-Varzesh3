@@ -485,6 +485,14 @@ Person:
 | CandidateID | INT | PK | NOT NULL |
 | PollID | INT | FK → Poll | NOT NULL |
 
+### PollOption
+
+| Column | Type | Key | Constraint |
+|--------|------|-----|------------|
+| OptionID | INT | PK | NOT NULL |
+| OptionText | VARCHAR(255) | | NOT NULL |
+| PollID | INT | FK → Poll | NOT NULL |
+
 ### UserVotesInPoll *(Junction Table)*
 | Column | Type | Key | Constraint |
 |--------|------|-----|------------|
