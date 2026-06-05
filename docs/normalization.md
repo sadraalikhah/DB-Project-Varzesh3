@@ -260,7 +260,7 @@ Person:
 |--------|------|-----|------------|
 | MatchID | INT | PK/FK → Match | NOT NULL |
 | TeamID | INT | PK/FK → Team | NOT NULL |
-| Role | ENUM('Home','Away') | | NOT NULL |
+| Role | ENUM('Home','Away') |  PK | NOT NULL |
 | Score | INT | | |
 
 ### Formation *(1:1 with Match)*
