@@ -76,6 +76,8 @@ Picture *(new table — normalizes multivalued attribute from both PictureGaller
 | PictureID | INT | PK | NOT NULL |
 | GalleryID | INT | FK → PictureGallery | nullable |
 | NewsID | INT | FK → News | nullable |
+| URL | VARCHAR(255) | | |
+|,ريال»
 
 **Reason:** Both `PictureGallery` and `News` had a multivalued `Pictures` attribute — each could have many images. Storing multiple URLs in one field violates 1NF. We extract them into a separate `Picture` table. `PictureID` is a new surrogate key added during mapping since the original EER had no key for this multivalued attribute.
 
@@ -401,6 +403,7 @@ Person:
 | PictureID | INT | PK | NOT NULL |
 | GalleryID | INT | FK → PictureGallery | nullable |
 | NewsID | INT | FK → News | nullable |
+| URL | VARCHAR(255) | | |
 
 ### Tag
 | Column | Type | Key | Constraint |
