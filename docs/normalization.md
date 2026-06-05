@@ -470,7 +470,6 @@ Person:
 | LikeID | INT | PK | NOT NULL |
 | UserID | INT | FK → User | NOT NULL |
 | ContentID | INT | FK → Content | nullable |
-| CommentID | INT | FK → Comment | nullable |
 
 ### Poll *(After 1NF — Candidates removed)*
 | Column | Type | Key | Constraint |
